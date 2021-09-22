@@ -1,0 +1,16 @@
+h1{
+    margin-top: 1em;
+}
+body{
+    background-color: rgb(243, 243, 243);
+}
+.container{
+    border: 1px lightgray solid;
+    padding: 0 2em;
+    background-color: white;
+    margin: 1em auto;
+    
+}
+.container ul{
+    padding: 1em;
+}
