@@ -4,10 +4,11 @@
 // Input= > [9,8].sum()
 // Output => 17
 
-let x=0;
+
 Array.prototype.sum= function(){
+  let x=0;
   this.map(a=>x+=a);
   return x;
 }
-console.log([9,8].sum())
+console.log([9,10,1].sum())
 
