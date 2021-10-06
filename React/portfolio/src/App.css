@@ -1,0 +1,5 @@
+.is-active{
+  text-decoration: none;
+  color: darkgray;
+  cursor: default;
+}
