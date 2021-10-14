@@ -15,9 +15,9 @@ export const Nav = () => {
                 <li>AddExpensePage</li>
             </NavLink>
 
-            <NavLink activeClassName='is-active' exact to='/Edit'>
+            {/* <NavLink activeClassName='is-active' exact to='/Edit'>
                 <li>EditExpensePage</li>
-            </NavLink>
+            </NavLink> */}
 
             <NavLink activeClassName='is-active' exact to='/Help'>
                 <li>HelpPage</li>

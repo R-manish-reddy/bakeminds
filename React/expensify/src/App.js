@@ -1,43 +1,40 @@
 import React from 'react';
-import './App.css';
+import AppRouter from './routers/AppRouter';
+import configureStore from './store/configureStore';
+//import './App.css';
+import { Provider } from 'react-redux';
+import { addExpense } from './actions/expenses';
+import { setTextFilter } from './actions/filters';
+import getVisibleExpenses from './selectors/expenses'
 
-import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
-
-import Nav from './components/Nav'
-import AddExpensePage from './pages/AddExpensePage'
-import ExpenseDashboardPage from './pages/ExpenseDashboardPage'
-import EditExpensePage from './pages/EditExpensePage'
-import HelpPage from './pages/HelpPage'
-import NotFoundPage from './pages/NotFoundPage'
-
-//Playground stuff
-import Redux from './playground/redux-101';
-import Destructuring from './playground/destructring';
+const  store = configureStore();
 
 
-function App() {
-  return (
-    <Router>
-        <div className="App">
-          <Nav />
-          <Switch>
-            <Route path='/' exact component={ExpenseDashboardPage} />
-            <Route path='/Add' exact  component={AddExpensePage} />
-            <Route path='/Edit/:id' exact component={EditExpensePage} />
-            <Route path='/Edit' exact component={EditExpensePage} />
-            <Route path='/Help' exact component={HelpPage} />
-           
-            <Route  exact component={NotFoundPage} />
-          </Switch>
-         
-          {/*Playground stuff*/}
+store.dispatch(addExpense({description: 'water bill',amount:4500}))
+store.dispatch(addExpense({description: 'gas bill',createdAt:1000}))
+store.dispatch(addExpense({description: 'Rent',amount:10902}))
 
-          <Redux />
-          <Destructuring />
-      </div>
-    </Router>
-    
-  );
+
+
+console.log(store.getState())
+const state = store.getState();
+const visibleExpenses =getVisibleExpenses(state.expenses,state.filters)
+
+
+console.log(visibleExpenses)
+
+
+
+const App =()=>{
+
+  return(
+    <Provider store={store}>
+    <AppRouter />
+    </Provider>
+  )
 }
+
+
+
 
 export default App;
